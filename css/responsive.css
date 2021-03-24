@@ -236,3 +236,19 @@ Design and Developed by: iqonicthemes.in
     .iq-countdown li::after{right: -17px;}
     
 }
+
+
+@media(max-width:992px){
+
+    .mystery-image{
+        height:200px;
+        margin-left:20px
+    }
+} 
+
+@media(min-width:995px){
+
+    .mystery-image{
+        height:300px;
+    }
+} 
