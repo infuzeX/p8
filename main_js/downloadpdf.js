@@ -11,10 +11,9 @@ form.addEventListener("submit", async (e) => {
   elements = [...e.target.elements];
   elements.forEach(({ name, value }) => name && (data[name] = value))
   console.log(data);
-  await downloadpdf(data);
-  /* const number = '+91' + data.contact;
-   showStatus('notify', 'INFO', 'verifying...');
-   initOtpReq(number);*/
+
+  const number = '+91' + data.contact;
+  initOtpReq(number);
 });
 
 //init otp req
@@ -28,22 +27,24 @@ function initOtpReq(number) {
       result = confirmation;
       showPopup();
     })
-    .catch(err => showStatus('notify', 'FAILED', err.message))
+    .catch(err => alert(err.message))
 }
 //verify otp 
-function verifyOtp(e) {
+async function verifyOtp(e) {
   e.preventDefault();
   const otp = e.path[1].elements[0].value;
 
   if (otp) {
-    console.log(otp)
-    result.confirm(otp)
-      .then(() => {
-        showStatus('otp', 'SUCCESS', 'verified')
-        showPopup()
-        sendData(data);
-      })
-      .catch((err) => showStatus('otp', 'FAILED', err.message))
+
+    try {
+      console.log(otp)
+      const isVerified = await result.confirm(otp)
+      console.log(isVerified)
+      showPopup()
+      await downloadpdf(data);
+    } catch (err) {
+      alert(err.message)
+    }
   }
 
 }

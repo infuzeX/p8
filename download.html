@@ -19,6 +19,9 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/otp.css"> 
+    <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
     <style type="text/css">
         .hov a:hover {
             background-color: #ffb100;
@@ -51,6 +54,21 @@
 </head>
 
 <body>
+    <div class="backdrop1">
+
+		<div class="popup">
+			<span>🛈 OTP SENT TO YOUR NUMBER</span>
+			<form>
+				<input placeholder="Enter 6 Digit OTP" type="number" class="otp">
+				<div id="otp">
+					<span style="visibility:hidden;">testing testing</span>
+				</div>
+				<button onclick="verifyOtp(event)">VERIFY</button>
+			</form>
+		</div>
+
+	</div>
+    <div id="recaptcha"></div>
     <!-- loading -->
     <div id="loading">
         <div id="loading-center">

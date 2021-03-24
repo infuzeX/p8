@@ -1,0 +1,72 @@
+.backdrop1{
+  user-select: none;
+  display:none;
+  position: fixed;
+  width: 100%;
+  height:100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.08);
+  z-index:1500;
+}
+.close-popup {
+   display:flex; 
+}
+.backdrop1 > .popup {
+  width:90%;
+  margin:auto;
+  max-width: 400px;
+  padding:2.5%;
+  background-color: white;
+}
+
+.backdrop1 > .popup > span {
+  display: block;
+  width:90%;
+  padding:2.5%;
+  margin:2% 2.5%;
+  font-size:0.9rem;
+}
+
+.backdrop1 > .popup > form { 
+  width:95%;
+  padding:2.5%;
+  max-width:350px;
+  margin: auto;
+}
+
+.backdrop1 > .popup > form > input {
+  width:100%;
+  padding:3.5% 2.5%;
+  margin:0;
+  border:1px solid #eee;
+  color: #ffb607;
+  font-size: 0.9rem;
+  border-radius:5px;
+}
+.backdrop1 > .popup > form > input::placeholder {
+  color:grey;
+}
+
+.backdrop1 > .popup > form > button {
+  width:100%;
+  padding:3% 2%;
+  margin:5px 0;
+  border:1px solid #eee;
+  background-color: #ffb607;
+  border-radius:5px;
+}
+.backdrop1 >.popup > form >  #otp {
+  width:100%;
+  padding:0;
+  margin:0;
+  text-align: left;
+}
+.backdrop1 > .popup > form > #otp > span {
+  font-size:0.8rem;
+  margin:0;
+  padding:0;
+}
+
+#notify , #otp {
+  text-align: center;
+}
