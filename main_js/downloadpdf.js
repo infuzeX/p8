@@ -3,17 +3,18 @@ let open = false,
   data = {},
   elements;
 
-const form = document.querySelector(".courses-form");
+const form = document.querySelector(".contact");
 
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  elements = e.target.elements;
+  elements = [...e.target.elements];
   elements.forEach(({ name, value }) => name && (data[name] = value))
   console.log(data);
-  const number = '+91' + data.contact;
-  showStatus('notify','INFO','verifying...');
-  initOtpReq(number);
+  await downloadpdf(data);
+  /* const number = '+91' + data.contact;
+   showStatus('notify', 'INFO', 'verifying...');
+   initOtpReq(number);*/
 });
 
 //init otp req
@@ -50,20 +51,25 @@ function verifyOtp(e) {
 //IN MODIFICTION xhr -> fetch
 async function downloadpdf(data) {
 
-   const res = await fetch('/junior/otpphp/optdemodb.php', {
-     method:"POST",
-     header:{
-       "content-type":"application/json"
-     },
-     body:JSON.stringify(data)
-   })
-   const {success = null, data = null, message = null} = await res.json();
+  try {
+    const res = await fetch('/higher/php/downloadpdf.php', {
+      method: "POST",
+      header: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
 
-   if(success === "success"){
-     clearfield(elements);
-   }else{
-     showStatus('notify', "FAILED", message);
-   }
+    if (res.redirected) {
+      window.location.href = res.url;
+    } else {
+      const response = await res.json();
+      alert(response.message);
+    }
+  }
+  catch (err) {
+    alert(err.message);
+  }
 }
 //IN MODIFICTION xhr -> fetch
 
