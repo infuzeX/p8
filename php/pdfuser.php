@@ -1,7 +1,5 @@
 <!DOCTYPE html>
     <html lang="en">
-
-    
 <!-- Mirrored from www.shreethemes.in/landrick/layouts/page-invoice.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 25 Apr 2020 12:22:01 GMT -->
 <head>
         <meta charset="utf-8" />
@@ -84,9 +82,9 @@
                                                 <tr>
                                                     <th scope="col" class="text-left">Index</th>
                                                     <th scope="col" class="text-left">Name</th>
-                                                    <th scope="col" class="text-left">Email</th>
+                                                   
                                                     <th scope="col" class="text-left">Contact</th>
-                                                    <th scope="col" class="text-left">code</th>
+                                                  
                             
                                                 </tr>
                                             </thead>
