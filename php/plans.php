@@ -14,7 +14,7 @@ if(!in_array($plan, $plans)){
   </script>
 </head>
 
-<body>
+<body >
     <form class="enroll">
         <input name="name" type="text" placeholder="Enter your name">
         <input name="email" type="email" placeholder="Enter your email">
@@ -23,7 +23,7 @@ if(!in_array($plan, $plans)){
         <button>Enroll</button>
     </form>
 </body>
-<script>
+<script >
     const form = document.querySelector(".enroll");
 
     form.addEventListener("submit", async e => {
@@ -51,5 +51,14 @@ if(!in_array($plan, $plans)){
         }
     })
 </script>
+
+
+
+
+
+
+<style>
+
+</style>
 
 </html>
