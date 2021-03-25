@@ -70,7 +70,7 @@ h6 { font-size: 1em; }
 Extra class
 ---------------------------------------------------------------------*/
 .overflow-h { overflow: hidden; }
-section { position: relative; background: #ffffff; padding: 70px 0; display: block; width: 100%; overflow: hidden; z-index: 999; }
+section { position: relative; background: #ffffff; padding: 20px 0; display: block; width: 100%; overflow: hidden; z-index: 999; }
 .overview-block-ptb { padding: 100px 0; }
 .overview-block-pt { padding: 100px 0 0 0; }
 .overview-block-pb { padding: 0 0 100px 0; }
