@@ -18,6 +18,7 @@ form.addEventListener("submit", async (e) => {
 
 //init otp req
 function initOtpReq(number) {
+  showStatus("INFO","sending otp to your number")
   let option = {
     'size': 'invisible',
   }
@@ -27,7 +28,7 @@ function initOtpReq(number) {
       result = confirmation;
       showPopup();
     })
-    .catch(err => alert(err.message))
+    .catch(err => showStatus("FAILED",err.message))
 }
 //verify otp 
 async function verifyOtp(e) {
@@ -37,13 +38,12 @@ async function verifyOtp(e) {
   if (otp) {
 
     try {
-      console.log(otp)
-      const isVerified = await result.confirm(otp)
-      console.log(isVerified)
+      await result.confirm(otp);
       showPopup()
+      showStatus("SUCCESS","FETCHING PDF");
       await downloadpdf(data);
     } catch (err) {
-      alert(err.message)
+      showStatus("FAILED",err.message);
     }
   }
 
@@ -65,11 +65,11 @@ async function downloadpdf(data) {
       window.location.href = res.url;
     } else {
       const response = await res.json();
-      alert(response.message);
+      showStatus("FAILED",response.message);
     }
   }
   catch (err) {
-    alert(err.message);
+    showStatus("FAILED",err.message);
   }
 }
 //IN MODIFICTION xhr -> fetch
@@ -87,12 +87,12 @@ function showPopup() {
   document.querySelector('.backdrop1').classList.toggle('close-popup');
 }
 
-function showStatus(id, status, message) {
+function showStatus(status, message) {
   const color = {
     'INFO': '#2196F3',
     'FAILED': '#f44336',
     'SUCCESS': '#4CAF50'
   }
-  const el = document.querySelector(`#${id}`);
+  const el = document.querySelector(`#notify`);
   el.innerHTML = `<span style="color:${color[status]}">${message}</span>`;
 }
